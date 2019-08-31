@@ -3,6 +3,7 @@ package com.revature.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 public class ModuleHierarchy {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "j_id")
 	private int id;
 
@@ -24,13 +25,6 @@ public class ModuleHierarchy {
 
 	public ModuleHierarchy() {
 		super();
-	}
-
-	public ModuleHierarchy(int id, int mParent, int mChild) {
-		super();
-		this.id = id;
-		this.mParent = mParent;
-		this.mChild = mChild;
 	}
 
 	public int getId() {
@@ -90,6 +84,8 @@ public class ModuleHierarchy {
 		return true;
 	}
 
-
-
+	public ModuleHierarchy(int mParent, int mChild) {
+		this.mParent = mParent;
+		this.mChild = mChild;
+	}
 }
